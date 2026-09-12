@@ -76,5 +76,5 @@ The dataset is downloaded using **KaggleHub** as implemented in the notebook.
 
 This lab provides practical experience in **image classification** and demonstrates how Deep Learning and Machine Learning models can be used and compared for skin lesion classification.
 
-> **Note:** This lab is for educational purposes only and is not intended for medical diagnosis.
+
 
