@@ -44,7 +44,6 @@ Dataset
 The notebook uses the HAM10000 skin lesion dataset through Hugging Face.
 
 Dataset used in the notebook:
-
 "marmal88/skin_cancer"
 
 The notebook automatically selects images belonging to the nevi (melanocytic nevi) category.
@@ -56,7 +55,6 @@ Technologies & Libraries
 - NumPy
 - Pandas
 - Matplotlib
-- Hugging Face Datasets
 - Google Colab
 
 How to Run
@@ -77,4 +75,8 @@ The notebook generates:
 
 These files contain the measurements and comparison results obtained from the image-processing pipeline.
 
+Conclusion
 
+This assignment demonstrates how classical computer vision techniques can be used for skin lesion boundary detection. Gaussian filtering helps reduce noise, while Canny and Sobel edge detectors identify important image boundaries. Contour detection and morphological operations are then used to obtain the lesion region and calculate its area and perimeter.
+
+The comparison of different filters and edge detection methods shows how preprocessing and threshold selection can affect the quality of lesion boundary detection.
