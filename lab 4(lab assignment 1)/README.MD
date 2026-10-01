@@ -1,7 +1,3 @@
-Here is a clean, well-formatted summary and breakdown of your Computer Vision assignment submission, structured with clear **bold headings**.
-
----
-
 **PROJECT OVERVIEW**
 This project presents an automated Computer Vision pipeline designed to detect skin lesion boundaries in dermoscopy images. By combining classical image preprocessing, edge detection algorithms, contour extraction, and morphological operations, the pipeline segments the lesion region and quantifies key geometric properties.
 
