@@ -1,82 +1,59 @@
-CV Assignment 01 – Lab 04
+Here is a clean, well-formatted summary and breakdown of your Computer Vision assignment submission, structured with clear **bold headings**.
 
-Skin Lesion Boundary Detection Using Canny Edge Detection
+---
 
-This lab implements a Computer Vision pipeline for detecting the boundary of skin lesions in dermoscopy images using image preprocessing, edge detection, contour extraction, and image analysis techniques.
+**PROJECT OVERVIEW**
+This project presents an automated Computer Vision pipeline designed to detect skin lesion boundaries in dermoscopy images. By combining classical image preprocessing, edge detection algorithms, contour extraction, and morphological operations, the pipeline segments the lesion region and quantifies key geometric properties.
 
-Project Overview
+---
 
-The main goal of this assignment is to detect the boundary of a skin lesion from dermoscopy images and analyze the detected region.
+**PIPELINE ARCHITECTURE**
 
-Pipeline
+1. **Input:** Original RGB Dermoscopy Image
+2. **Grayscale Conversion:** Simplifies color channels into intensity values.
+3. **Noise Reduction:** Smoothes image noise using Gaussian filtering.
+4. **Edge Detection:** Extracts preliminary boundaries via the Canny algorithm.
+5. **Lesion Segmentation:** Applies contour detection and morphological operations to generate a binary mask.
+6. **Feature Quantification:** Calculates Lesion Area and Perimeter.
 
-Original Image → Grayscale → Gaussian Filtering → Canny Edge Detection → Lesion Boundary → Area & Perimeter
+---
 
-Tasks Performed
+**KEY TASKS PERFORMED**
 
-- Loaded 5 dermoscopy images from the HAM10000 skin lesion dataset.
-- Converted RGB images to grayscale.
-- Applied different smoothing filters:
-  - Original
-  - Average
-  - Gaussian
-  - Median
-- Applied Sobel edge detection.
-- Applied Canny edge detection using different threshold values:
-  - 50–100
-  - 100–200
-  - 150–250
-- Converted detected edges into a lesion mask using contour detection and morphological operations.
-- Calculated:
-  - Lesion area
-  - Lesion perimeter
-  - Boundary strength
-- Compared different filters and edge detection methods.
-- Used a reference lesion mask for final comparison.
-- Evaluated the results using:
-  - Noise Handling
-  - Edge Quality
-  - Boundary Detection / IoU
-- Saved the results into CSV files.
+* **Dataset Selection:** Sampled 5 dermoscopy images from the melanocytic nevi category of the HAM10000 dataset via Hugging Face (`marmal88/skin_cancer`).
+* **Smoothing Filter Comparison:** Analyzed and evaluated original, Average, Gaussian, and Median filters.
+* **Edge Detection Analysis:** Compared Sobel edge detection with Canny edge detection across three distinct threshold ranges:
+* Low Threshold: `50–100`
+* Medium Threshold: `100–200`
+* High Threshold: `150–250`
 
-Dataset
 
-The notebook uses the HAM10000 skin lesion dataset through Hugging Face.
+* **Mask Generation:** Transformed Canny edges into continuous lesion masks using contour extraction and morphological closing/filling.
+* **Quantitative Evaluation:** Computed Area, Perimeter, and Boundary Strength. Evaluated performance against reference masks using Intersection over Union (IoU), Noise Handling, and Edge Quality.
+* **Data Export:** Automated the export of quantitative metrics and comparative evaluations into structured CSV files.
 
-Dataset used in the notebook:
-"marmal88/skin_cancer"
+---
 
-The notebook automatically selects images belonging to the nevi (melanocytic nevi) category.
+**TECHNOLOGIES & DEPENDENCIES**
 
-Technologies & Libraries
+* **Programming Language:** Python 3
+* **Image Processing:** OpenCV (`cv2`), NumPy
+* **Data Handling & Export:** Pandas
+* **Data Visualization:** Matplotlib
+* **Environment:** Google Colab
 
-- Python
-- OpenCV
-- NumPy
-- Pandas
-- Matplotlib
-- Google Colab
+---
 
-How to Run
+**EXECUTION & OUTPUTS**
 
-1. Open the notebook in Google Colab.
-2. Run the cells from top to bottom.
-3. The required dataset is loaded automatically from Hugging Face.
-4. The notebook processes the selected dermoscopy images.
-5. View the generated plots and comparison results.
-6. The final CSV files are generated automatically.
+* **Execution Steps:** Open the notebook in Google Colab and run all cells sequentially. The dataset loads directly from Hugging Face without requiring manual file uploads.
+* **Generated CSV Reports:**
+* `results_table.csv`: Contains individual lesion metrics (Area, Perimeter, Boundary Strength).
+* `final_comparison.csv`: Details comparative evaluation across filter types, threshold parameters, and IoU scores against baseline reference masks.
 
-Output Files
 
-The notebook generates:
 
-- "results_table.csv"
-- "final_comparison.csv"
+---
 
-These files contain the measurements and comparison results obtained from the image-processing pipeline.
-
-Conclusion
-
-This assignment demonstrates how classical computer vision techniques can be used for skin lesion boundary detection. Gaussian filtering helps reduce noise, while Canny and Sobel edge detectors identify important image boundaries. Contour detection and morphological operations are then used to obtain the lesion region and calculate its area and perimeter.
-
-The comparison of different filters and edge detection methods shows how preprocessing and threshold selection can affect the quality of lesion boundary detection.
+**CONCLUSION & INSIGHTS**
+This experiment illustrates the efficacy and sensitivity of classical computer vision techniques for biomedical image segmentation. Proper noise suppression via Gaussian filtering is critical prior to edge detection, as un-smoothed noise creates false edges. Furthermore, parameter selection in Canny edge detection (specifically threshold tuning) directly impacts the accuracy of contour extraction and downstream IoU metric scores.
