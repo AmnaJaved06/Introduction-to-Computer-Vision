@@ -117,5 +117,3 @@ This project demonstrates the practical application of classical computer vision
 
 
 
-Artificial Intelligence Student  
-COMSATS University Islamabad
