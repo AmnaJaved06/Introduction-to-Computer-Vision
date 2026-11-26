@@ -1,6 +1,6 @@
 # CNN Feature Visualization, Parameter Audit & Critical Analysis
 
-A small lab Task that runs on a normal laptop or free Colab. It shows what a Convolutional Neural Network does to an image: five hand-made 3 x 3 filters are pushed through convolution, ReLU, max pooling and average pooling, two small CNN architectures are audited by hand for their trainable parameters, and five analysis questions are answered with evidence from the generated feature maps.
+A small lab project that runs on a normal laptop or free Colab. It shows what a Convolutional Neural Network does to an image: five hand-made 3 x 3 filters are pushed through convolution, ReLU, max pooling and average pooling, two small CNN architectures are audited by hand for their trainable parameters, and five analysis questions are answered with evidence from the generated feature maps.
 
 The full code, figures and written answers are in `CNN_Visualization_Lab_Assignment.ipynb`. Every number in this README is copied from that notebook's outputs, except the Keras parameter counts, which appear when the notebook is run in Colab (see Section 5, Part II).
 
@@ -34,15 +34,7 @@ The full code, figures and written answers are in `CNN_Visualization_Lab_Assignm
 ```
 .
 ├── README.md
-├── CNN_Visualization_Lab_Assignment.ipynb   # executed notebook with all outputs
-└── images/                                  # figures taken from the notebook outputs
-    ├── q1_input_image.png
-    ├── q1_kernels.png
-    ├── q1_grid_5x4.png
-    ├── q2_relu_blackout.png
-    ├── q2_activation_comparison.png
-    ├── q3_pooling_comparison.png
-    └── q3_ink_on_white.png
+└── CNN_Visualization_Lab_Assignment.ipynb   # executed notebook with all outputs and figures
 ```
 
 ## 3. How to run
@@ -81,16 +73,9 @@ Each answer is preceded by a code cell that produces its evidence (ReLU blackout
 
 ### Part I. Feature maps
 
-Input image and kernels
-
-![Input](images/q1_input_image.png)
-![Kernels](images/q1_kernels.png)
-
 Feature map sizes: Conv/ReLU 284 x 510, both poolings 142 x 255.
 
-5 x 4 grid (5 filters x 4 stages)
-
-![Grid](images/q1_grid_5x4.png)
+5 x 4 grid statistics (5 filters x 4 stages):
 
 | Filter | Raw min / max | % negative in A | % zero in B (blackout) | Max-pool peak | Avg-pool peak | Peak kept by avg |
 |---|---|---|---|---|---|---|
@@ -113,9 +98,6 @@ Shape trace: 32x32x3 -> 32x32x5 -> 16x16x5 -> 16x16x10 -> 8x8x10 -> 10 -> 10.
 
 **Q1. ReLU blackout and alternatives**
 
-![Blackout](images/q2_relu_blackout.png)
-![Activations](images/q2_activation_comparison.png)
-
 | Activation | Min | Max | % pixels exactly 0 | % pixels below 0 |
 |---|---|---|---|---|
 | Raw (Stage A) | -3.710 | 3.878 | 4.35 | 48.79 |
@@ -127,8 +109,6 @@ Sobel-X is black after ReLU where brightness falls from left to right (right-han
 
 **Q2. Max vs average pooling**
 
-![Pooling](images/q3_pooling_comparison.png)
-
 | Filter | % pixels above 50% of peak, max pool | % pixels above 50% of peak, avg pool |
 |---|---|---|
 | Sharpen | 12.37 | 0.73 |
@@ -138,8 +118,6 @@ Sobel-X is black after ReLU where brightness falls from left to right (right-han
 | Box blur | 39.92 | 35.36 |
 
 Dark ink on a white page (synthetic text image):
-
-![Ink](images/q3_ink_on_white.png)
 
 | Image | % ink pixels (value below 0.5) |
 |---|---|
